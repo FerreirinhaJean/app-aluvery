@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.jean.aluvery.components.ProductSection
+import br.com.jean.aluvery.components.sampleProducts
 
 @Composable
 fun HomeScreen() {
@@ -21,9 +22,9 @@ fun HomeScreen() {
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Spacer(Modifier)
-        ProductSection("Promoções")
-        ProductSection("Doces")
-        ProductSection("Salgados")
+        ProductSection("Promoções", sampleProducts)
+        ProductSection("Doces", sampleProducts)
+        ProductSection("Salgados", sampleProducts)
         Spacer(Modifier)
     }
 }

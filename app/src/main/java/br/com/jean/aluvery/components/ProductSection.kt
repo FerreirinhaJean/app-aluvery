@@ -14,11 +14,36 @@ import br.com.jean.aluvery.R
 import br.com.jean.aluvery.model.Product
 import java.math.BigDecimal
 
+val sampleProducts = listOf(
+    Product(
+        name = "Hamburguer",
+        price = BigDecimal("14.99"),
+        image = R.drawable.burger
+    ),
+    Product(
+        name = "Pizza",
+        price = BigDecimal("17.99"),
+        image = R.drawable.pizza
+    ),
+    Product(
+        name = "Batata frita",
+        price = BigDecimal("7.99"),
+        image = R.drawable.fries
+    ),
+    Product(
+        name = "Pastel de carne",
+        price = BigDecimal("5.99"),
+    )
+)
+
 @Composable
-fun ProductSection(name: String) {
+fun ProductSection(
+    title: String,
+    products: List<Product>
+) {
     Column {
         Text(
-            text = name,
+            text = title,
             Modifier.padding(start = 16.dp, end = 16.dp),
             fontSize = 20.sp,
             fontWeight = FontWeight(400)
@@ -33,33 +58,10 @@ fun ProductSection(name: String) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Spacer(Modifier)
-            ProductItem(
-                Product(
-                    name = "Hamburguer",
-                    price = BigDecimal("14.99"),
-                    image = R.drawable.burger
-                )
-            )
-            ProductItem(
-                Product(
-                    name = "Pizza",
-                    price = BigDecimal("17.99"),
-                    image = R.drawable.pizza
-                )
-            )
-            ProductItem(
-                Product(
-                    name = "Batata frita",
-                    price = BigDecimal("7.99"),
-                    image = R.drawable.fries
-                )
-            )
-            ProductItem(
-                Product(
-                    name = "Pastel de carne",
-                    price = BigDecimal("5.99"),
-                )
-            )
+
+            for (product in products)
+                ProductItem(product = product)
+
             Spacer(Modifier)
         }
 
@@ -72,5 +74,5 @@ fun ProductSection(name: String) {
 @Composable
 fun ProductSessioPreview(
 ) {
-    ProductSection("Promoções")
+    ProductSection("Promoções", sampleProducts)
 }
